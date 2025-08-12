@@ -1,33 +1,44 @@
 // script.js
-
-window.onload = function () {
-  // 获取回到顶部按钮
-  const btn = document.getElementById("backToTop");
-
-  // 滚动时显示或隐藏按钮
-  window.onscroll = function () {
-    if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
+window.addEventListener('load', () => {
+  // Back to top
+  const btn = document.getElementById('backToTop');
+  const toggleBtn = () => {
+    const y = document.documentElement.scrollTop || document.body.scrollTop;
+    btn.style.display = y > 300 ? 'block' : 'none';
   };
+  window.addEventListener('scroll', toggleBtn);
+  toggleBtn();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // 点击按钮平滑回到顶部
-  btn.onclick = function () {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-  };
-
-  // 让导航菜单在当前页面高亮
-  const currentPath = window.location.pathname.split("/").pop();
-  const navLinks = document.querySelectorAll("nav a");
-
-  navLinks.forEach(link => {
-    if (link.getAttribute("href") === currentPath) {
-      link.classList.add("active");
-    }
   });
-};
+
+  // Scrollspy：高亮当前章节
+  const links = document.querySelectorAll('.section-nav .nav-link, .site-nav.compact a');
+  const map = {};
+  links.forEach(l => {
+    const id = l.getAttribute('href').replace('#','');
+    map[id] = map[id] || [];
+    map[id].push(l);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      const id = en.target.id;
+      if (map[id]) {
+        map[id].forEach(el => el.classList.toggle('active', en.isIntersecting));
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 });
+
+  document.querySelectorAll('main .section').forEach(sec => io.observe(sec));
+});
