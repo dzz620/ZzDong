@@ -7,59 +7,61 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="experience.html">Experience</a>
-    <a href="projects.html">Projects</a>
-    <a href="reflections.html">Reflections</a>
+  <!-- 顶部导航（移动端可见） -->
+  <nav class="site-nav compact">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
   </nav>
 
-  <div class="container">
-    <h1>Zz Dong</h1>
-    <p class="subtitle">I'm a curious mind blending sustainability, technology, and creativity.</p>
+  <div class="layout">
+    <!-- 左侧固定信息区 -->
+    <aside class="sidebar">
+      <h1 class="brand">Zz Dong</h1>
+      <p class="tagline">I build simple, thoughtful digital experiences.</p>
 
-    <hr />
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I currently live in Germany and study Bioeconomy. I'm exploring new directions in IT, AI, and creative self-expression. I enjoy working independently, thinking deeply, and building things from scratch.</p>
-      <p>I'm also learning to cook (especially Greek and Western dishes) and love writing personal reflections through daily journaling. My girlfriend Nikoleta inspires many of my creative moments.</p>
-    </section>
-
-    <hr />
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>21-Day IT Learning Challenge</strong><br/>Self-driven plan to learn HTML, CSS, and Python from scratch and build this personal website.</li>
-        <li><strong>AI "Dream Fulfillment" Series</strong><br/>An AI-powered video series imagining historical figures seeing their unfulfilled dreams come true.</li>
-        <li><strong>Van Gogh Interactive Portrait</strong><br/>Combines Van Gogh’s self-portrait with AI-generated animation to reflect on solitude and fulfillment.</li>
+      <ul class="section-nav">
+        <li><a href="#about" class="nav-link">ABOUT</a></li>
+        <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+        <li><a href="#projects" class="nav-link">PROJECTS</a></li>
       </ul>
-    </section>
 
-    <hr />
+      <div class="socials">
+        <a href="https://github.com/dzz620" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:your.email@example.com">Email</a>
+        <a href="https://www.xiaohongshu.com/user/profile/63dbaa91000000000260110e7" target="_blank" rel="noopener">XHS</a>
+      </div>
+    </aside>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Tech:</strong> HTML, CSS, Python (beginner), Notion, ChatGPT, Google Earth Engine</li>
-        <li><strong>AI Tools:</strong> Runway, Pika, Midjourney, ElevenLabs</li>
-        <li><strong>Languages:</strong> Chinese (native), German (A2–B1), English (C1), Greek (beginner)</li>
-      </ul>
-    </section>
+    <!-- 右侧内容区 -->
+    <main class="content">
+      <section id="about" class="section">
+        <h2>About</h2>
+        <p>I currently live in Germany and study Bioeconomy. I'm exploring new directions in IT, AI, and creative self-expression.</p>
+        <p>I enjoy working independently, thinking deeply, and building things from scratch. Daily journaling & cooking keep me grounded.</p>
+      </section>
 
-    <hr />
+      <section id="experience" class="section">
+        <h2>Experience</h2>
+        <ul>
+          <li><strong>Bioeconomy Study — Germany</strong> · Sustainability & systems thinking（时间待填）</li>
+          <li><strong>21-Day IT Learning</strong> · HTML/CSS/JS/Python 自主学习与实践（进行中）</li>
+          <li><strong>Creative AI Experiments</strong> · 视频/图像生成、叙事表达（进行中）</li>
+        </ul>
+      </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/dzz620" target="_blank" rel="noopener">dzz620</a></p>
-      <p>Xiaohongshu: <a href="https://www.xiaohongshu.com/user/profile/63dbaa91000000000260110e7" target="_blank" rel="noopener">@Niko</a></p>
-    </section>
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <ul>
+          <li><strong>Personal Site</strong> — 星空主题多页网站（<a href="https://github.com/dzz620/ZzDong" target="_blank" rel="noopener">source</a>）</li>
+          <li><strong>AI “Dream Fulfillment”</strong> — 历史人物愿望系列（待补充）</li>
+          <li><strong>Van Gogh Interactive Portrait</strong> — 自画像互动实验（待补充）</li>
+        </ul>
+      </section>
+    </main>
   </div>
 
   <button id="backToTop" aria-label="Back to top">Back to Top</button>
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
