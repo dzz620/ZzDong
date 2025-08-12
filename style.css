@@ -98,6 +98,80 @@ a:hover {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
   display: none;
 }
+/* 两栏布局 */
+.layout{
+  width: min(1200px, calc(100% - 2rem));
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+  gap:3rem;
+  margin: 2rem auto;
+}
+
+/* 左侧固定信息区 */
+.sidebar{
+  position: sticky; top: 2rem;
+  align-self: start;
+  padding:2rem;
+  border-radius:14px;
+  background: linear-gradient(135deg, rgba(0,0,0,.55), rgba(0,0,0,.35));
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+.brand{
+  margin:0 0 .25rem;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  color:#e6ecff;
+  letter-spacing:.5px;
+}
+.tagline{ color:#c9d2ea; margin:0 0 1.5rem; }
+
+.section-nav{
+  list-style:none; padding:0; margin:1.5rem 0 2rem;
+}
+.section-nav li{ margin:.8rem 0; }
+.section-nav a{
+  color:#c7d0e6; text-decoration:none; letter-spacing: .15em;
+  font-weight:700; opacity:.8; display:inline-flex; align-items:center; gap:.6rem;
+}
+.section-nav a::before{
+  content:""; width:38px; height:2px; background:rgba(255,255,255,.25);
+  display:inline-block; transition: width .25s ease, background .25s ease;
+}
+.section-nav a:hover::before{ width:60px; background:#ffdd57; }
+.section-nav a.active{ color:#ffffff; }
+.section-nav a.active::before{ background:#ffdd57; width:60px; }
+
+.socials a{
+  color:#ffdd57; text-decoration:none; margin-right:1rem; font-weight:600;
+}
+
+/* 右侧内容区 */
+.content{
+  padding:2rem;
+  border-radius:14px;
+  background: rgba(0,0,0,.55);
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+.section{ margin: 2.5rem 0; }
+.section h2{
+  margin:0 0 1rem; font-size:1.6rem; color:#ffffff;
+  border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:.6rem;
+}
+
+/* 顶部紧凑导航（移动端） */
+.site-nav.compact{
+  display:none;
+  position: sticky; top:0; z-index:1000;
+  background: rgba(0,0,0,.45); backdrop-filter: blur(6px);
+  padding:.6rem 1rem; border-radius:10px; width:min(1200px, calc(100% - 2rem)); margin: .75rem auto 0;
+}
+.site-nav.compact a{ color:#ffdd57; text-decoration:none; margin-right:1rem; font-weight:600; }
+
+/* 响应式：窄屏改为单列 */
+@media (max-width: 900px){
+  .layout{ grid-template-columns: 1fr; }
+  .sidebar{ position: static; }
+  .site-nav.compact{ display:block; }
+}
 
 #backToTop:hover {
   filter: brightness(1.05);
